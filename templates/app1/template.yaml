@@ -1,0 +1,10 @@
+version: 1
+type: pipeline-template
+name: Template for app1
+parameters:
+  - name: STRING_PARAM
+    displayName: An individual string parameter
+    type: string
+  - name: INT_PARAM
+    displayName: An individual string integer
+    type: number
