@@ -1,0 +1,5 @@
+version: 1
+type: pipeline-template-catalog
+
+name: BlueCatalog
+displayName: Shared Template Catalog for Teams Working on the Blue App
