@@ -1,21 +1,39 @@
 pipeline {
     agent any
     stages {
-        stage('app1_dev') {
-            input {
-                message "Should we continue?"
-                ok "Yes, we should."
-                submitter "alice,bob"
-                parameters {
-                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+        
+          stage ("Build") {
+
+                steps{
+                    withMaven() {
+                        sh "./mvnw verify"
+                    }   
                 }
             }
-            steps {
-                echo "Hello, ${PERSON}, nice to meet you."
-                echo "Value of string parameter ${STRING_PARAM}"
-                echo "Value of integer parameter ${INT_PARAM}"
-
-            }
+            stage ("Deploy to CloudFoundry") {
+                    
+                steps {
+                    withCfCli(
+                        apiEndpoint: 'https://api.run.pivotal.io', 
+                        cloudFoundryCliVersion: 'cloudfoundry-cli-6.22.1', 
+                        credentialsId: 'nofar_cf', 
+                        organization: 'cloudbees', 
+                        space: '${CF_SPACE}') 
+                    {   
+                    sh """cf push hello-world -p target/*.jar"""
+                    }
+                }
+            }      
+    }
+    
+    post { 
+        failure { 
+            echo "On Post-failue"
+            slackSend channel: '${CHANNEL}', color: '#FF0000',message: 'Deployment to CF Faild', teamDomain: 'cloudbees', tokenCredentialId: 'Jenkins-slack-integration'
+        }
+        success{
+            echo "On Post-success"
+            slackSend channel: '${CHANNEL}', color: '#439FE0',message: 'Successfully Deployed to CF', teamDomain: 'cloudbees', tokenCredentialId: 'Jenkins-slack-integration'
         }
     }
 }
