@@ -1,10 +1,10 @@
 version: 1
 type: pipeline-template
-name: Template for app1
+name: Template for HelloTemplates app
 parameters:
-  - name: STRING_PARAM
-    displayName: An individual string parameter
+  - name: CHANNEL
+    displayName: The name of the Slack channel to use
     type: string
-  - name: INT_PARAM
-    displayName: An individual string integer
-    type: number
+  - name: CF_SPACE
+    displayName: The CF space for deployment
+    type: string
