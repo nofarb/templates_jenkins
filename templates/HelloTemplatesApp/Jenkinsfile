@@ -18,7 +18,7 @@ pipeline {
                         cloudFoundryCliVersion: 'cloudfoundry-cli-6.22.1', 
                         credentialsId: 'nofar_cf', 
                         organization: 'cloudbees', 
-                        space: '${CF_SPACE}') 
+                        space: "${CF_SPACE}") 
                     {   
                     sh """cf push hello-world -p target/*.jar"""
                     }
@@ -29,11 +29,11 @@ pipeline {
     post { 
         failure { 
             echo "On Post-failue"
-            slackSend channel: '${CHANNEL}', color: '#FF0000',message: 'Deployment to CF Faild', teamDomain: 'cloudbees', tokenCredentialId: 'Jenkins-slack-integration'
+            slackSend channel: "${CHANNEL}", color: '#FF0000',message: 'Deployment to CF Faild', teamDomain: 'cloudbees', tokenCredentialId: 'Jenkins-slack-integration'
         }
         success{
             echo "On Post-success"
-            slackSend channel: '${CHANNEL}', color: '#439FE0',message: 'Successfully Deployed to CF', teamDomain: 'cloudbees', tokenCredentialId: 'Jenkins-slack-integration'
+            slackSend channel: "${CHANNEL}", color: '#439FE0',message: 'Successfully Deployed to CF', teamDomain: 'cloudbees', tokenCredentialId: 'Jenkins-slack-integration'
         }
     }
 }
