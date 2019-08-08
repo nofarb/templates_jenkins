@@ -3,19 +3,19 @@ type: pipeline-template
 templateType: MULTIBRANCH
 name: Template for HelloTemplates app
 parameters:
-  - name: CHANNEL
+  - name: SLACK_CHANNEL
     displayName: The name of the Slack channel to use
     type: string
   - name: CF_SPACE
     displayName: The CF space for deployment
     type: string
-  - name: repoName
-    displayName: Repo Name
+  - name: GITHUB_REPO
+    displayName: Github Repositoy Name
     type: string
     
 multibranch:
   branchSource:
     github:
       repoOwner: nofarb
-      repository: ${repoName}
+      repository: ${GITHUB_REPO}
       credentialsId: nofat_github_access_key
