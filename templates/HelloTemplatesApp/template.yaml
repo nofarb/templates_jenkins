@@ -9,13 +9,13 @@ parameters:
   - name: CF_SPACE
     displayName: The CF space for deployment
     type: string
-  - name: repoUrl
-    displayName: Repo URL
+  - name: repoName
+    displayName: Repo Name
     type: string
     
 multibranch:
   branchSource:
     github:
       repoOwner: nofarb
-      repository: ${repoUrl}
+      repository: ${repoName}
       credentialsId: nofat_github_access_key
