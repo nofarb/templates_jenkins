@@ -19,5 +19,5 @@ multibranch:
       repoOwner: nofarb
       repository: ${GITHUB_REPO}
       credentialsId: nofat_github_access_key
-  scanRepositoryInterval: 1 hours
+  scanRepositoryInterval: 1 hour
 
