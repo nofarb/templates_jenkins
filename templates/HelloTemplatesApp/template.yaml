@@ -12,6 +12,10 @@ parameters:
   - name: GITHUB_REPO
     displayName: Github Repositoy Name
     type: string
+  - name: github_creds
+    displayName: GitHub Credentials ID
+    type: credentials
+    defaultValue: github-creds-example
     
 multibranch:
   branchSource:
