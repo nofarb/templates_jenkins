@@ -1,6 +1,6 @@
 version: 1
 type: pipeline-template
-name: Java apps
+name: Java apps template
 parameters:
   - name: STRING_PARAM
     displayName: An individual string parameter
