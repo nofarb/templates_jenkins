@@ -2,4 +2,4 @@ version: 1
 type: pipeline-template-catalog
 
 name: BlueCatalog
-displayName: Shared Template Catalog for Nofar's projects
+displayName: Shared Template Catalog for Nofars Jenkins projects
