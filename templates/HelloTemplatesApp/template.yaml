@@ -1,7 +1,7 @@
 version: 1
 type: pipeline-template
 templateType: MULTIBRANCH
-name: Template for HelloTemplates app
+name: Template for HelloWorld apps
 parameters:
   - name: SLACK_CHANNEL
     displayName: The name of the Slack channel to use
